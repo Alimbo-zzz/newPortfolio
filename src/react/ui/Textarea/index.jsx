@@ -15,13 +15,14 @@ function Textarea(e) {
 		onChange,
 		onFocus,
 		onBlur,
+		value = '',
 		valid = true,
 		...props
 	} = e;
 
 	const icons = useGallery(AllIcons)?.obj;
 
-	const [textValue, setTextValue] = useState('');
+	const [textValue, setTextValue] = useState(value);
 	const [textFocus, setTextFocus] = useState(false);
 	const [textEmpty, setTextEmpty] = useState(true);
 	const [textValid, setTextValid] = useState(valid);
@@ -36,6 +37,11 @@ function Textarea(e) {
 	useEffect(() => {
 		setTextValid(valid);
 	}, [valid])
+
+
+	useEffect(() => {
+		setTextValue(value);
+	}, [value])
 
 
 	const wrapProps = {

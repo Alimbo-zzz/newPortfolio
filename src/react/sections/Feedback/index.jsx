@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import cls from './style.module.scss'
 import classNames from 'classnames';
 import decor_img from '@images/decor-1.png';
@@ -19,7 +19,11 @@ function Feedback(props) {
 	});
 
 	const [requestLoad, setRequestLoad] = useState(false);
-
+	const formRef = useRef(null);
+	const [inpName, setInpName] = useState("");
+	const [inpPhone, setInpPhone] = useState("");
+	const [inpMail, setInpMail] = useState("");
+	const [inpMessage, setInpMessage] = useState("");
 
 
 	const inpNameData = {
@@ -28,7 +32,9 @@ function Feedback(props) {
 		valid: formValid.name,
 		name: 'name',
 		maxLength: 34,
-		onFocus: () => setFormValid(prev => ({ ...prev, name: true }))
+		onFocus: () => setFormValid(prev => ({ ...prev, name: true })),
+		value: inpName,
+		onChange: e => setInpName(e.target.value),
 	}
 
 	const inpPhoneData = {
@@ -38,7 +44,9 @@ function Feedback(props) {
 		type: 'tel',
 		valid: formValid.phone,
 		name: 'phone',
-		onFocus: () => setFormValid(prev => ({ ...prev, phone: true }))
+		onFocus: () => setFormValid(prev => ({ ...prev, phone: true })),
+		value: inpPhone,
+		onChange: e => setInpPhone(e.target.value),
 	}
 
 	const inpMailData = {
@@ -48,7 +56,9 @@ function Feedback(props) {
 		valid: formValid.mail,
 		name: 'mail',
 		maxLength: 200,
-		onFocus: () => setFormValid(prev => ({ ...prev, mail: true }))
+		onFocus: () => setFormValid(prev => ({ ...prev, mail: true })),
+		value: inpMail,
+		onChange: e => setInpMail(e.target.value),
 	}
 
 	const inpMessageData = {
@@ -58,10 +68,20 @@ function Feedback(props) {
 		valid: formValid.message,
 		name: 'message',
 		maxLength: 1000,
-		onFocus: () => setFormValid(prev => ({ ...prev, message: true }))
+		onFocus: () => setFormValid(prev => ({ ...prev, message: true })),
+		value: inpMessage,
+		onChange: e => setInpMessage(e.target.value),
 	}
 
 
+	function formReset(e) {
+		let form = e?.target || formRef.current;
+		form.reset();
+		setInpName('');
+		setInpPhone('');
+		setInpMail('');
+		setInpMessage('');
+	}
 
 	async function formSend(e) {
 		e.preventDefault();
@@ -81,12 +101,12 @@ function Feedback(props) {
 
 		setRequestLoad(true);
 
-
 		const url = 'https://portfolio-backend-dusky.vercel.app/send-message';
 		const headers = { "Content-Type": 'multipart/form-data' }
 		const request = axios({ url, headers, method: 'post', data: formData })
 			.then(res => {
 				console.log(res.data);
+				formReset();
 				const resId = res.data?.data?.id;
 				if (resId) window.localStorage.setItem("portfolio-user-id", resId);
 			})
@@ -102,7 +122,6 @@ function Feedback(props) {
 				error: 'Ошибка!'
 			}
 		)
-
 	}
 
 
@@ -112,7 +131,7 @@ function Feedback(props) {
 			<div className={classNames(['container', cls.feedback__grid])}>
 				<h2 className={classNames(['title', cls.feedback__title])}>Связаться со мной</h2>
 
-				<form className={cls.feedback__form} autoComplete='off' onSubmit={formSend} >
+				<form className={cls.feedback__form} ref={formRef} autoComplete='off' onSubmit={formSend} onReset={formReset} >
 					<Input {...inpNameData} />
 					<Input {...inpPhoneData} />
 					<Input {...inpMailData} />

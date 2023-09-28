@@ -17,13 +17,14 @@ function Input(e) {
 		onFocus,
 		onBlur,
 		className = '',
+		value = '',
 		type = 'text',
 		...props
 	} = e;
 
 	const icons = useGallery(AllIcons)?.obj;
 
-	const [inpValue, setInpValue] = useState('');
+	const [inpValue, setInpValue] = useState(value);
 	const [inpFocus, setInpFocus] = useState(false);
 	const [inpEmpty, setInpEmpty] = useState(true);
 	const [inpValid, setInpValid] = useState(true);
@@ -39,6 +40,9 @@ function Input(e) {
 		setInpValid(valid);
 	}, [valid])
 
+	useEffect(() => {
+		setInpValue(value);
+	}, [value])
 
 	const wrapProps = {
 		"data-valid": inpValid,
