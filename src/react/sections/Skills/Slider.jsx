@@ -55,7 +55,7 @@ function Slider({ className }) {
 	}
 
 
-	const setName = e => e.split('/').pop().slice(0, -4).replace('_', ' ');
+	const setName = e => e.split('/').pop().slice(0, -4).replace('_', ' ').split('-')[0];
 
 	return (<>
 		<div className={classNames([className, 'skills-slider'])}>
