@@ -1,0 +1,53 @@
+.socials {
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2em;
+
+
+	&__item {
+		background: $white;
+		width: 3em;
+		aspect-ratio: 1/1;
+		border-radius: 50%;
+		position: relative;
+		cursor: pointer;
+		transition: 0.2s;
+
+		&:hover {
+			transform: scale(1.2);
+			box-shadow: 0 0 0.5em 0 rgba($color: #fff, $alpha: 1.0);
+		}
+	}
+
+	img {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 60%;
+		pointer-events: none;
+		user-select: none;
+
+		&[data-name='github'] {
+			width: 70%;
+		}
+
+		&[data-name='telegram'] {
+			transform: translate(-55%, -50%);
+		}
+	}
+}
+
+
+
+
+// media
+
+
+@media(max-width: $desktop) {
+	.socials {
+		gap: 1em;
+	}
+}

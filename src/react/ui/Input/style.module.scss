@@ -1,0 +1,107 @@
+$defaultColor: $gray;
+$textColor: $white;
+$activeColor: $fiolet-light;
+$danger: rgb(187, 53, 53);
+$mandatory: rgb(200, 175, 65);
+
+
+@mixin activePlaceholder {
+	font-size: 0.8em;
+	top: 0;
+	left: 0;
+	transform: translate(0, 0);
+}
+
+
+@mixin decorLine {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 1px;
+	transition: 0.2s;
+}
+
+
+
+.input {
+	width: 100%;
+	padding: 0.5em 0;
+	position: relative;
+	display: flex;
+	padding-top: 1em;
+	align-items: center;
+	gap: 0.5em;
+
+	&[data-valid='false'] {
+		&::before {
+			background: $danger;
+		}
+	}
+
+	&::before {
+		@include decorLine;
+		background: $defaultColor;
+	}
+
+	&::after {
+		@include decorLine;
+		transform: scaleX(0);
+		background: $activeColor;
+		height: 2px;
+	}
+
+	img {
+		width: 2.5em;
+	}
+
+	p {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translate(0, -50%);
+		white-space: nowrap;
+		width: 100%;
+		overflow: hidden;
+		z-index: -1;
+		color: $defaultColor;
+		padding-left: 44px;
+		padding-right: 1em;
+		text-overflow: ellipsis;
+		transition: 0.2s;
+		pointer-events: none;
+	}
+
+
+	input {
+		width: 100%;
+		background: transparent;
+		border: none;
+		color: $textColor;
+	}
+}
+
+
+
+
+.input {
+
+	&[data-focus='true'] {
+		p {
+			@include activePlaceholder;
+		}
+
+		&::after {
+			transform: scale(1);
+		}
+	}
+
+	&[data-empty='false'] {
+		p {
+			@include activePlaceholder;
+		}
+	}
+
+
+}

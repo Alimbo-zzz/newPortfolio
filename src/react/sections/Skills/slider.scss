@@ -1,0 +1,80 @@
+.skills-slider {
+
+
+
+
+	&__item {
+		margin: 1em 0.5em;
+		background: $white;
+		aspect-ratio: 2/2;
+		gap: 1em;
+		padding: 2em;
+		user-select: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-radius: 1em;
+		border-bottom-right-radius: 80px;
+		box-shadow:
+			inset -0.2em -0.2em 1em 0.2em rgba($color: $fiolet, $alpha: 0.8),
+			0 0 0.4em 0.2em rgba($color: $fiolet-light, $alpha: 0.8);
+
+		@media(max-width: $tablet) {
+			padding: 2em 1em;
+		}
+
+		@media(max-width: $phone) {
+			padding: 1.5em 0.5em;
+		}
+
+		img {
+			width: 100%;
+			height: 120px;
+
+			@media(max-width: $desktop) {
+				height: 90px;
+			}
+
+			@media(max-width: $phone) {
+				height: 70px;
+			}
+		}
+
+		h3 {
+			color: $black;
+			font-size: 28px;
+			font-weight: 600;
+			text-align: center;
+
+			@media(max-width: $phone) {
+				font-size: 22px;
+			}
+		}
+	}
+
+
+}
+
+
+.swiper {
+	overflow: visible;
+	padding: 0 2.5em;
+
+	@media(max-width: $desktop) {
+		padding: 0 1.5em;
+	}
+
+	@media(max-width: $phone) {
+		padding: 0;
+	}
+}
+
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+	bottom: -50px;
+
+	span {
+		width: 1.2em;
+		height: 1.2em;
+		background: $fiolet;
+	}
+}

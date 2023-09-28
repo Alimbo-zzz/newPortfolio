@@ -1,0 +1,56 @@
+body {
+	font-family: 'Roboto', 'Tahoma', 'Vardana';
+	background: $black;
+	color: $white;
+	overflow-x: hidden;
+}
+
+
+section {
+	overflow: hidden;
+}
+
+
+* {
+	scroll-behavior: smooth;
+}
+
+img {
+	user-select: none;
+	pointer-events: none;
+}
+
+::selection {
+	color: $white;
+	background: $fiolet;
+}
+
+
+hr {
+	opacity: 0.3;
+}
+
+
+
+.title {
+	font-weight: 600;
+	font-size: 46px;
+	position: relative;
+	padding-left: 0.7em;
+	margin-bottom: 2em;
+
+	@media(max-width: $tablet) {
+		font-size: 34px;
+	}
+
+	&::before {
+		content: '';
+		width: 0.25em;
+		height: 75%;
+		background: $fiolet;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+}

@@ -1,0 +1,172 @@
+.about {
+	background: $dark;
+	position: relative;
+	z-index: 2;
+	padding-top: 6em;
+	padding-bottom: 8em;
+
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2em;
+
+		@media(max-width: $tablet) {
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2em;
+		position: relative;
+
+
+		[data-name='text'] {
+			position: absolute;
+			z-index: -1;
+			right: 0;
+			top: 10%;
+			width: 23em;
+
+			@media(max-width: $tablet) {
+				width: 20em;
+				transform: translate(60%, 25%);
+			}
+		}
+
+		h4 {
+			font-size: 20px;
+			font-weight: 600;
+		}
+
+		h3 {
+			font-size: 28px;
+			font-weight: 600;
+			color: $fiolet;
+			text-align: right;
+			padding-right: 40%;
+			margin-bottom: 0.6em;
+			text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
+
+			@media(max-width: $tablet) {
+				padding-right: 10%;
+			}
+		}
+	}
+
+	&__description {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		font-size: 14px;
+		max-width: 420px;
+		color: $gray-sky;
+		line-height: 1.2em;
+		position: relative;
+
+	}
+
+
+	&__decors {
+		max-width: 550px;
+		position: relative;
+
+		img {
+			position: absolute;
+		}
+
+		[data-name='frontend'] {
+			left: 0;
+			top: 0%;
+			transform: translate(0, -28%) rotate(20deg);
+			width: 16em;
+
+			@media(max-width: $laptop) {
+				width: 14em;
+			}
+		}
+
+		[data-name='backend'] {
+			right: 0%;
+			top: 10%;
+			width: 17em;
+
+			@media(max-width: $desktop) {
+				width: 15em;
+			}
+
+			@media(max-width: $laptop) {
+				width: 14em;
+				top: 15%;
+			}
+		}
+
+		[data-name='figma'] {
+			right: 0%;
+			bottom: 5%;
+			width: 22em;
+
+			@media(max-width: $desktop) {
+				width: 20em;
+				bottom: 10%;
+				right: -8%;
+			}
+
+			@media(max-width: $laptop) {
+				width: 18em;
+				right: -18%;
+				transform: rotate(-30deg);
+			}
+		}
+
+		[data-name='develop'] {
+			left: 0;
+			bottom: 25%;
+			transform: translate(0%, 0) rotate(20deg);
+			width: 16em;
+
+			@media(max-width: $laptop) {
+				width: 14em;
+				bottom: 30%;
+			}
+		}
+
+		[data-name='teamwork'] {
+			left: 0;
+			bottom: 0;
+			transform: translate(0, 38%) rotate(-20deg);
+			width: 26em;
+
+			@media(max-width: $laptop) {
+				width: 22em;
+				bottom: 4%;
+			}
+		}
+
+		[data-name='cube'] {
+			position: absolute;
+			left: 0;
+			top: 0;
+			transform: translate(-40%, -10%);
+			z-index: -1;
+
+			@media(max-width: $tablet) {
+				transform: translate(-100%, -10%);
+			}
+		}
+
+
+
+
+		@media(max-width: $tablet) {
+			position: absolute;
+
+			*:not([data-name='cube']) {
+				display: none;
+			}
+		}
+	}
+}

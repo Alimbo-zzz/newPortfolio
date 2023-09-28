@@ -1,0 +1,20 @@
+.logo {
+	width: 4em;
+	display: block;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 0 0.5em 0.05em rgba($color: #fff, $alpha: 0.5);
+
+	@media(max-width: $tablet) {
+		width: 3.5em;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		user-select: none;
+		pointer-events: none;
+	}
+}

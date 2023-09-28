@@ -1,0 +1,54 @@
+$defaultColor: $gray;
+$textColor: $white;
+$activeColor: $fiolet-light;
+$danger: rgb(187, 53, 53);
+$mandatory: rgb(200, 175, 65);
+
+
+
+.textarea {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	width: 100%;
+
+	&__head {
+		display: flex;
+		gap: 0.8em;
+		align-items: center;
+		color: $defaultColor;
+
+		img {
+			width: 2em;
+		}
+	}
+
+
+	&[data-valid='false'] {
+		textarea {
+			border-color: $danger;
+		}
+	}
+
+
+	textarea {
+		border: none;
+		outline: none;
+		background: none;
+		border: 1px solid $defaultColor;
+		border-radius: 0.5em;
+		height: 8em;
+		padding: 0.4em 0.8em;
+		color: $textColor;
+		transition: 0.2s;
+	}
+
+
+
+
+	&[data-focus='true'] {
+		textarea {
+			border-color: $activeColor;
+		}
+	}
+}
