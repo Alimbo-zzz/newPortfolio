@@ -19,7 +19,7 @@ const Intro = (props) => {
 
 				<div className={cls.intro__title}>
 					<h4>Личный сайт</h4>
-					<h1>Frontend</h1>
+					<h1>Fullstack</h1>
 					<h3>Разработчика</h3>
 				</div>
 
